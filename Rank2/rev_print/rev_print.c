@@ -6,29 +6,28 @@ void	putchar(char c)
 	return ;
 }
 
-int	ft_strlen(char *str)
+int	checklen(char *str)
 {
 	int i = 0;
-	while(str[i])
+
+	while (str[i])
 		i++;
 	return (i);
 }
+
 void	rev_print(char *str)
 {
-	int i = ft_strlen(str);
-	while(i)
-		putchar(str[--i]);
-	putchar('\n');
+	int len = checklen(str);
+
+	while (len-- > 0)
+		putchar(str[len]);
 	return ;
 }
 
-int main(int argc, char **argv)
+int	main(int ac, char **av)
 {
-	if (argc != 2)
-	{
-		putchar('\n');
-		return (0);
-	}
-	rev_print(argv[1]);
+	if (ac == 2 && av[1] != NULL)
+		rev_print(av[1]);
+	putchar('\n');
 	return (42);
 }
